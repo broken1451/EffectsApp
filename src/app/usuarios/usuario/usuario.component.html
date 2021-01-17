@@ -1,0 +1,26 @@
+<ng-container *ngIf="user">
+  <div class="row">
+    <div class="col-4" *ngIf="!loading">
+      <img [src]="user?.avatar" alt="" class="img-thumbnail" />
+    </div>
+    <div class="col" *ngIf="!loading">
+      <ul class="list-group" *ngIf="!loading">
+        <li class="list-group-item"><b>Nombre: </b> {{ user?.first_name }}</li>
+        <li class="list-group-item"><b>Apellido: </b> {{ user?.last_name }}</li>
+      </ul>
+    </div>
+  </div>
+</ng-container>
+
+<div class="alert alert-info text-center" role="alert" *ngIf="loading && !user">
+  <h4 class="alert-heading">Cargando...</h4>
+  <p>
+    <i class="fa fa-sync fa-spin fa-x3"></i>
+  </p>
+  <p class="mb-0"></p>
+</div>
+
+<div class="alert alert-danger text-center" role="alert" *ngIf="id && !user">
+  <h4 class="alert-heading">No hay persona con ese id</h4>
+  <p class="mb-0"></p>
+</div>
